@@ -1,10 +1,6 @@
+# Pull base image
+From tomcat:8-jre8
 
-FROM tomcat:8.0.20-jre8
-
-MAINTAINER "valaxytech@gmail.com" 
-
-COPY target/webapp.war /usr/local/tomcat/webapps/webapp.war
-
-
-
-
+# Maintainer
+MAINTAINER "ashokbawge96@mail.com"
+COPY webapp/target/webapp.war /usr/local/tomcat/webapps
