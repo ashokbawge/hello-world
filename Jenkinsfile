@@ -36,6 +36,15 @@ pipeline {
                 sh ' docker push ashokbawge/jenkins_pipeline_demo:${BUILD_NUMBER}  '
             }
         }
+       
+         stage ('Docker container creation'){
+                            sshagent(['Docker-server']) {
+                            sh " ssh -o StrictHostKeyChecking = no vagrant@100.0.0.2 docker service rm javawebapp || true"
+                            sh " ssh -o StrictHostKeyChecking = no vagrant@100.0.0.2 docker service create --name javawebapp -p 8082:8082 --replicas 2 ashokbawge/jenkins_pipeline_demo:${BUILD_NUMBER} "
+                    }
+            
+        }
+        
         
     }
     
