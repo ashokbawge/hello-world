@@ -3,7 +3,7 @@ FROM tomcat:8.0.20-jre8
 
 MAINTAINER "valaxytech@gmail.com" 
 
-COPY target/java-web-app*.war /usr/local/tomcat/webapps/java-web-app.war
+COPY webapp.war /usr/local/tomcat
 
 
 
