@@ -26,7 +26,7 @@ pipeline {
                     [
                         artifactId: 'webapp', 
                         classifier: '', 
-                        file: 'webapp/target/web.war', 
+                        file: 'webapp/target/webapp.war', 
                         type: 'war'
                     ]], 
                     credentialsId: 'Nexus_Credentials', 
