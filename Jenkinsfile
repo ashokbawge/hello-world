@@ -20,6 +20,26 @@ pipeline {
             }
         }
         
+        stage (' Upload War to Nexus') {
+            steps{
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'simple-app', 
+                        classifier: '', 
+                        file: 'target/simple-app-1.0.0.war', 
+                        type: 'war'
+                    ]], 
+                    credentialsId: 'Nexus_Credentials', 
+                    groupId: 'in.javahome', 
+                    nexusUrl: '100.0.0.50', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'http://100.0.0.50:8081/repository/simpleapp-release', 
+                    version: '1.0.0'
+        
+            }  
+         }     
+        
         stage ('Docker_Build_image'){
             steps {
                 sh ' docker build -t ashokbawge/jenkins_pipeline_demo:${BUILD_NUMBER} . '
