@@ -24,18 +24,18 @@ pipeline {
             steps{
                 nexusArtifactUploader artifacts: [
                     [
-                        artifactId: 'simple-app', 
+                        artifactId: 'webapp', 
                         classifier: '', 
-                        file: 'target/simple-app-3.0.0.war', 
+                        file: 'webapp/target/web.war', 
                         type: 'war'
                     ]], 
                     credentialsId: 'Nexus_Credentials', 
-                    groupId: 'in.javahome', 
-                    nexusUrl: '100.0.0.50', 
+                    groupId: 'com.example.maven-project', 
+                    nexusUrl: '100.0.0.50:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: 'http://100.0.0.50:8081/repository/simpleapp-release', 
-                    version: '3.0.0'
+                    repository: 'simpleapp-release', 
+                    version: '*'
         
             }  
          }     
